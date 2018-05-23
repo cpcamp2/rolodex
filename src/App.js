@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import ListContacts from './ListContacts'
+import React, { Component } from 'react';
+import ListContacts from './ListContacts';
 
 
 class App extends Component {
@@ -25,10 +25,17 @@ class App extends Component {
       }
     ]
   }
+  removeContact = (contact) => {
+    this.setState((state) => ({
+      contacts: state.contacts.filter((c) => c.id !== contact.id)
+    }))
+  }
   render() {
     return (
       <div>
-        <ListContacts contacts={this.state.contacts} />
+        <ListContacts
+          onDeleteContact={this.removeContact}
+          contacts={this.state.contacts} />
       </div>
     )
   }
